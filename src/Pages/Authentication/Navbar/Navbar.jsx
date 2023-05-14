@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
-const Header = () => {
-  const navItems =<>
- 
-              <li><Link to='/' className='font-semibold text-xl'>Home</Link></li>
-              <li><Link className='font-semibold text-xl'>About</Link></li>
-              <li><Link className='font-semibold text-xl'>Services</Link></li>
-            
-  </>
+const Navbar = () => {
+    const {user, logout}=useContext(AuthContext)
+    
+    const navItems =<>
+    <li><Link to='/'>Home</Link></li>
+    <li><Link >Order</Link></li>
+    <li><Link>Order Review</Link></li>
+    <li><Link>Manage Inventory</Link></li>
+    <li>{
+        user?<button title={user.displayName} onClick={logout}>Logout</button>:<Link to='/account/signin'>Login</Link>
+        }</li>
+
+   
+  
+</>
     return (
         <div className="navbar bg-base-100">
         <div className="navbar-start">
@@ -24,16 +32,14 @@ const Header = () => {
           </div>
           <Link to='/'><img className='w-1/2' src="/src/assets/logo.svg" alt="" /></Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             {navItems}
           </ul>
         </div>
-        <div className="navbar-end">
-          <button className="btn hover:bg-red-500 border-red-500 text-red-500 hover:text-white hover:border-gray-700">Appoinment</button>
-        </div>
+       
       </div>
     );
 };
 
-export default Header;
+export default Navbar;
