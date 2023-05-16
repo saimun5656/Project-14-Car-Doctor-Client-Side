@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Pages/AuthProvider/AuthProvider';
 
 const Header = () => {
+  const {user,logout} = useContext(AuthContext)
   const navItems =<>
- 
               <li><Link to='/' className='font-semibold text-xl'>Home</Link></li>
               <li><Link className='font-semibold text-xl'>About</Link></li>
               <li><Link className='font-semibold text-xl'>Services</Link></li>
-            
+              <li><Link to='/orders' className='font-semibold text-xl'>My Order</Link></li>
+              {
+               user?
+               <> 
+                  <li><Link onClick={logout} className='font-semibold text-xl'>Logout</Link></li>
+               </>: <li><Link to='account/signin' className='font-semibold text-xl'>Login</Link></li>
+              }   
   </>
     return (
         <div className="navbar bg-base-100">

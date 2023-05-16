@@ -2,9 +2,11 @@ import React, { useContext, useState } from 'react';
 import loginImg from '../../../assets/images/login/login.svg'
 import { FaFacebookF, FaLinkedinIn} from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 const Signin = () => {
+  const {state}=useLocation()
+  console.log(state);
     const [success,setSuccess]=useState('')
     const [error,seterror]=useState('')
     const {googleSignin}=useContext(AuthContext)

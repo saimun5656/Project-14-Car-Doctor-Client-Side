@@ -5,7 +5,7 @@ import Footer from '../Shared/Footer/Footer';
 
 const Main = () => {
     return (
-        <div className=' bg-[#F3F3F3]'>
+        <div className=' bg-[#ffffff]'>
             <div className='w-11/12 max-w-screen-xl	 mx-auto'>
             <Header></Header>
             <Outlet></Outlet>
